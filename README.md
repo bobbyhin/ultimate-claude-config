@@ -7,8 +7,8 @@ A comprehensive configuration framework for Claude Code that transforms Claude i
 | Component | Count | Description |
 |-----------|-------|-------------|
 | Agents | 23 | Specialized AI agents for different tasks |
-| Commands | 55 | Executable workflow commands |
-| Skills | 17 | Reusable knowledge modules |
+| Commands | 48 | Executable workflow commands |
+| Skills | 16 | Reusable knowledge modules |
 | Rules | 8 | Behavioral guidelines |
 
 ## Installation
@@ -466,14 +466,76 @@ What do you need to do?
 
 ---
 
+## All Commands
+
+### General Commands (21)
+
+| Command | Description |
+|---------|-------------|
+| `/build-fix` | Fix TypeScript/JavaScript build errors |
+| `/checkpoint` | Save and verify project checkpoints |
+| `/code-review` | Comprehensive code review |
+| `/debug` | Quick debugging checklist |
+| `/e2e` | Run end-to-end tests |
+| `/eval` | Eval-driven development workflow |
+| `/go-build` | Fix Go build errors |
+| `/go-review` | Go-specific code review |
+| `/go-test` | Go TDD workflow |
+| `/learn` | Extract reusable patterns from session |
+| `/orchestrate` | Multi-agent workflow orchestration |
+| `/plan` | Quick feature planning |
+| `/refactor` | General code refactoring |
+| `/refactor-clean` | Remove dead code |
+| `/setup-pm` | Setup package manager |
+| `/skill-create` | Create skills from git history |
+| `/tdd` | Test-driven development |
+| `/test-coverage` | Analyze test coverage |
+| `/update-codemaps` | Update codebase documentation |
+| `/update-docs` | Sync documentation from source |
+| `/verify` | Automated build/lint/test verification |
+
+### GSD Commands (27)
+
+| Command | Description |
+|---------|-------------|
+| `/gsd:new-project` | Initialize new project with deep questioning |
+| `/gsd:plan-phase` | Create executable phase plan |
+| `/gsd:execute-phase` | Execute current phase |
+| `/gsd:verify-work` | User acceptance testing |
+| `/gsd:progress` | Show project progress |
+| `/gsd:quick` | Quick task without planning |
+| `/gsd:pause-work` | Save state and pause |
+| `/gsd:resume-work` | Resume with full context |
+| `/gsd:map-codebase` | Map existing codebase |
+| `/gsd:add-phase` | Add phase at end |
+| `/gsd:insert-phase` | Insert phase at position |
+| `/gsd:remove-phase` | Remove a phase |
+| `/gsd:research-phase` | Deep research for phase |
+| `/gsd:discuss-phase` | Discuss phase details |
+| `/gsd:list-phase-assumptions` | List phase assumptions |
+| `/gsd:new-milestone` | Create milestone |
+| `/gsd:complete-milestone` | Mark milestone done |
+| `/gsd:audit-milestone` | Validate milestone |
+| `/gsd:plan-milestone-gaps` | Identify gaps in milestone |
+| `/gsd:check-todos` | View pending tasks |
+| `/gsd:add-todo` | Add a todo item |
+| `/gsd:debug` | Systematic debugging with agents |
+| `/gsd:settings` | View/edit GSD settings |
+| `/gsd:set-profile` | Set model profile |
+| `/gsd:update` | Update GSD configuration |
+| `/gsd:help` | Get help |
+| `/gsd:join-discord` | Join Discord community |
+
+---
+
 ## File Structure
 
 ```
 .claude/
 ├── agents/                 # 23 AI agent definitions
-├── commands/               # 55 CLI commands
+├── commands/               # 48 CLI commands
 │   └── gsd/               # GSD-specific commands
-├── skills/                # 17 reusable knowledge modules
+├── skills/                # 16 reusable knowledge modules
 ├── rules/                 # 8 behavioral guidelines
 ├── hooks/                 # Session lifecycle hooks
 ├── get-shit-done/         # GSD framework
