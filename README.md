@@ -7,8 +7,8 @@ A comprehensive configuration framework for Claude Code that transforms Claude i
 | Component | Count | Description |
 |-----------|-------|-------------|
 | Agents | 23 | Specialized AI agents for different tasks |
-| Commands | 55 | Executable workflow commands |
-| Skills | 17 | Reusable knowledge modules |
+| Commands | 48 | Executable workflow commands |
+| Skills | 16 | Reusable knowledge modules |
 | Rules | 8 | Behavioral guidelines |
 
 ## Installation
