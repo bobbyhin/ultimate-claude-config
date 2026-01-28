@@ -471,9 +471,9 @@ What do you need to do?
 ```
 .claude/
 ├── agents/                 # 23 AI agent definitions
-├── commands/               # 55 CLI commands
+├── commands/               # 48 CLI commands
 │   └── gsd/               # GSD-specific commands
-├── skills/                # 17 reusable knowledge modules
+├── skills/                # 16 reusable knowledge modules
 ├── rules/                 # 8 behavioral guidelines
 ├── hooks/                 # Session lifecycle hooks
 ├── get-shit-done/         # GSD framework
