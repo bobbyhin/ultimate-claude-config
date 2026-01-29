@@ -9,12 +9,19 @@ Located in `~/.claude/agents/`:
 | planner | Implementation planning | Complex features, refactoring |
 | architect | System design | Architectural decisions |
 | tdd-guide | Test-driven development | New features, bug fixes |
-| code-reviewer | Code review | After writing code |
+| code-reviewer | Code review (TS/JS) | After writing code |
 | security-reviewer | Security analysis | Before commits |
-| build-error-resolver | Fix build errors | When build fails |
+| build-error-resolver | Fix build errors (TS/JS) | When build fails |
 | e2e-runner | E2E testing | Critical user flows |
 | refactor-cleaner | Dead code cleanup | Code maintenance |
 | doc-updater | Documentation | Updating docs |
+| database-reviewer | PostgreSQL optimization | Schema/query review |
+| py-error-resolver | Fix Python errors | Python ruff/pyright errors |
+| py-reviewer | Python code review | Review Python/FastAPI code |
+| go-build-resolver | Fix Go build errors | Go compilation errors |
+| go-reviewer | Go code review | Review Go code |
+| dart-error-resolver | Fix Dart/Flutter errors | Dart analyzer errors |
+| dart-reviewer | Dart/Flutter code review | Review Flutter code |
 
 ## Immediate Agent Usage
 
