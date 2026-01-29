@@ -7,7 +7,7 @@ A comprehensive configuration framework for Claude Code that transforms Claude i
 | Component | Count | Description |
 |-----------|-------|-------------|
 | Agents | 12 | Specialized AI agents for different tasks |
-| Commands | 21 | Executable workflow commands |
+| Commands | 20 | Executable workflow commands |
 | Skills | 16 | Reusable knowledge modules |
 | Rules | 8 | Behavioral guidelines |
 
@@ -216,38 +216,38 @@ Ensure code quality before committing.
 
 ## Workflow 5: Refactoring
 
-Clean up and improve existing code.
+Clean up and remove dead code safely.
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 1: Analyze Code                                            │
-│  Command: /refactor                                              │
+│  STEP 1: Analyze Dead Code                                       │
+│  Command: /refactor-clean                                        │
 │                                                                  │
 │  What happens:                                                   │
-│  - Identifies improvement opportunities                          │
-│  - Suggests refactoring strategies                               │
-│  - Preserves behavior                                            │
+│  - Runs analysis tools (knip, depcheck, ts-prune)                │
+│  - Generates report in .reports/dead-code-analysis.md            │
+│  - Categorizes: SAFE / CAUTION / DANGER                          │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 2: Clean Dead Code (Optional)                              │
-│  Command: /refactor-clean                                        │
+│  STEP 2: Remove Dead Code                                        │
+│  (Claude applies safe deletions)                                 │
 │                                                                  │
 │  What happens:                                                   │
-│  - Finds unused code                                             │
-│  - Removes dead imports                                          │
-│  - Cleans up leftovers                                           │
+│  - Deletes unused exports, files, dependencies                   │
+│  - Runs tests before and after each deletion                     │
+│  - Rolls back if tests fail                                      │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
 │  STEP 3: Verify No Regressions                                   │
-│  Command: /tdd                                                   │
+│  Command: /verify                                                │
 │                                                                  │
 │  What happens:                                                   │
-│  - Runs existing tests                                           │
-│  - Ensures nothing broke                                         │
+│  - Runs full test suite                                          │
+│  - Confirms nothing broke                                        │
 └──────────────────────────────────────────────────────────────────┘
 ```
 
@@ -318,8 +318,8 @@ Build features with tests first.
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 3: Refactor (IMPROVE)                                      │
-│  Command: /refactor                                              │
+│  STEP 3: Clean Up (IMPROVE)                                      │
+│  Command: /refactor-clean                                        │
 │                                                                  │
 │  What happens:                                                   │
 │  - Clean up implementation                                       │
@@ -383,7 +383,7 @@ Capture knowledge from your work session.
 | Run full verification | `/verify` |
 | Check test coverage | `/test-coverage` |
 | Run E2E tests | `/e2e` |
-| Refactor code | `/refactor` |
+| Clean up code | `/refactor-clean` |
 | Map the codebase | `/update-codemaps` |
 
 ## Decision Tree
@@ -407,7 +407,7 @@ What do you need to do?
 │   └─► /build-fix
 │
 ├─► Clean up code
-│   └─► /refactor → /refactor-clean → /tdd
+│   └─► /refactor-clean → /verify
 │
 ├─► Save progress
 │   └─► /checkpoint → /learn
@@ -420,7 +420,7 @@ What do you need to do?
 
 # Component Reference
 
-## All Commands (21)
+## All Commands (20)
 
 | Command | Description |
 |---------|-------------|
@@ -436,8 +436,7 @@ What do you need to do?
 | `/learn` | Extract reusable patterns from session |
 | `/orchestrate` | Multi-agent workflow orchestration |
 | `/plan` | Quick feature planning |
-| `/refactor` | General code refactoring |
-| `/refactor-clean` | Remove dead code |
+| `/refactor-clean` | Remove dead code safely with analysis tools |
 | `/setup-pm` | Setup package manager |
 | `/skill-create` | Create skills from git history |
 | `/tdd` | Test-driven development |
@@ -504,7 +503,7 @@ What do you need to do?
 ```
 .claude/
 ├── agents/                # 12 AI agent definitions
-├── commands/              # 21 CLI commands
+├── commands/              # 20 CLI commands
 ├── skills/                # 16 reusable knowledge modules
 ├── rules/                 # 8 behavioral guidelines
 ├── CLAUDE-TEMPLATE.md     # Project README template
