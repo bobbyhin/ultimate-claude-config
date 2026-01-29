@@ -6,231 +6,193 @@ A comprehensive configuration framework for Claude Code that transforms Claude i
 
 | Component | Count | Description |
 |-----------|-------|-------------|
-| Agents | 23 | Specialized AI agents for different tasks |
-| Commands | 48 | Executable workflow commands |
+| Agents | 12 | Specialized AI agents for different tasks |
+| Commands | 21 | Executable workflow commands |
 | Skills | 16 | Reusable knowledge modules |
 | Rules | 8 | Behavioral guidelines |
 
 ## Installation
 
 ```bash
-cp -r agents commands skills rules hooks get-shit-done settings.json /path/to/your-project/.claude/
+cp -r agents commands skills rules settings.json /path/to/your-project/.claude/
 ```
 
 ---
 
 # Workflows
 
-## Workflow 1: New Project (Greenfield)
+## Workflow 1: Plan & Build a Feature
 
-Start a brand new project from scratch.
-
-```
-┌──────────────────────────────────────────────────────────────────┐
-│  STEP 1: Initialize Project                                       │
-│  Command: /gsd:new-project                                        │
-│                                                                   │
-│  What happens:                                                    │
-│  - Claude asks deep questions about your project                  │
-│  - Gathers requirements, constraints, tech stack                  │
-│  - Creates PROJECT.md (context) and ROADMAP.md (phases)          │
-└──────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌──────────────────────────────────────────────────────────────────┐
-│  STEP 2: Plan First Phase                                         │
-│  Command: /gsd:plan-phase 1                                       │
-│                                                                   │
-│  What happens:                                                    │
-│  - Breaks phase into concrete tasks                               │
-│  - Identifies dependencies                                        │
-│  - Creates PLAN.md with executable steps                          │
-└──────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌──────────────────────────────────────────────────────────────────┐
-│  STEP 3: Execute Phase                                            │
-│  Command: /gsd:execute-phase                                      │
-│                                                                   │
-│  What happens:                                                    │
-│  - Claude works through each task in PLAN.md                      │
-│  - Writes code, creates files, runs tests                         │
-│  - Updates STATE.md with progress                                 │
-└──────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌──────────────────────────────────────────────────────────────────┐
-│  STEP 4: Verify Work                                              │
-│  Command: /gsd:verify-work                                        │
-│                                                                   │
-│  What happens:                                                    │
-│  - Checks all tasks completed                                     │
-│  - Runs tests, validates quality                                  │
-│  - Creates verification report                                    │
-└──────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-                    ┌─────────┴─────────┐
-                    │                   │
-                    ▼                   ▼
-              ✅ PASSED            ❌ FAILED
-                    │                   │
-                    ▼                   ▼
-          /gsd:plan-phase 2      Fix issues, then
-          (next phase)           /gsd:verify-work again
-```
-
----
-
-## Workflow 2: Existing Codebase (Brownfield)
-
-Work with a project that already has code.
+Plan a new feature and implement it with tests.
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 1: Map Existing Codebase                                    │
-│  Command: /gsd:map-codebase                                       │
-│                                                                   │
-│  What happens:                                                    │
-│  - Scans all existing code                                        │
-│  - Documents architecture, patterns, conventions                  │
-│  - Creates CODEBASE.md with full structure                        │
+│  STEP 1: Plan the Feature                                        │
+│  Command: /plan                                                  │
+│                                                                  │
+│  What happens:                                                   │
+│  - Describe what you want to build                               │
+│  - Claude creates a structured plan                              │
+│  - Identifies tasks, dependencies, risks                         │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 2: Initialize Project Context                               │
-│  Command: /gsd:new-project                                        │
-│                                                                   │
-│  What happens:                                                    │
-│  - Uses CODEBASE.md as reference                                  │
-│  - Asks about new features/changes needed                         │
-│  - Creates PROJECT.md and ROADMAP.md                              │
+│  STEP 2: Write Tests First                                       │
+│  Command: /tdd                                                   │
+│                                                                  │
+│  What happens:                                                   │
+│  - Writes tests before implementation (RED)                      │
+│  - Defines expected behavior                                     │
+│  - Tests should fail initially                                   │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
-                   Continue with Steps 2-4
-                   from Workflow 1
-```
-
----
-
-## Workflow 3: Quick Task
-
-Small tasks that don't need full planning.
-
-```
 ┌──────────────────────────────────────────────────────────────────┐
-│  SINGLE STEP                                                      │
-│  Command: /gsd:quick                                              │
-│                                                                   │
-│  What happens:                                                    │
-│  - Describe what you need                                         │
-│  - Claude executes immediately                                    │
-│  - No planning overhead                                           │
-│                                                                   │
-│  Best for:                                                        │
-│  - Small bug fixes                                                │
-│  - Minor feature additions                                        │
-│  - Quick refactors                                                │
-│  - One-off tasks                                                  │
+│  STEP 3: Implement                                               │
+│  (Claude writes the code)                                        │
+│                                                                  │
+│  What happens:                                                   │
+│  - Implements minimal code to pass tests (GREEN)                 │
+│  - Follows coding standards from rules/                          │
+│  - Uses patterns from skills/                                    │
+└──────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  STEP 4: Verify Everything                                       │
+│  Command: /verify                                                │
+│                                                                  │
+│  What happens:                                                   │
+│  - Runs build, lint, and tests                                   │
+│  - Confirms everything passes                                    │
+│  - Reports any issues                                            │
 └──────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Workflow 4: Debug & Fix
+## Workflow 2: Explore & Document Codebase
+
+Understand and document an existing codebase.
+
+```
+┌──────────────────────────────────────────────────────────────────┐
+│  STEP 1: Map the Codebase                                        │
+│  Command: /update-codemaps                                       │
+│                                                                  │
+│  What happens:                                                   │
+│  - Scans all source files                                        │
+│  - Generates architecture documentation                          │
+│  - Creates codemaps for backend, frontend, data                  │
+└──────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  STEP 2: Update Documentation                                    │
+│  Command: /update-docs                                           │
+│                                                                  │
+│  What happens:                                                   │
+│  - Syncs docs with source code                                   │
+│  - Detects stale documentation                                   │
+│  - Generates updated API docs                                    │
+└──────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Workflow 3: Debug & Fix
 
 Find and fix bugs systematically.
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 1: Analyze Issue                                            │
-│  Command: /debug                                                  │
-│                                                                   │
-│  What happens:                                                    │
-│  - Describe the bug/error                                         │
-│  - Claude analyzes root cause                                     │
-│  - Identifies affected code                                       │
+│  STEP 1: Analyze Issue                                           │
+│  Command: /debug                                                 │
+│                                                                  │
+│  What happens:                                                   │
+│  - Describe the bug/error                                        │
+│  - Claude analyzes root cause                                    │
+│  - Identifies affected code                                      │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 2: Apply Fix                                                │
-│  (Claude implements the fix)                                      │
-│                                                                   │
-│  What happens:                                                    │
-│  - Makes targeted code changes                                    │
-│  - Preserves existing functionality                               │
+│  STEP 2: Apply Fix                                               │
+│  (Claude implements the fix)                                     │
+│                                                                  │
+│  What happens:                                                   │
+│  - Makes targeted code changes                                   │
+│  - Preserves existing functionality                              │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 3: Add Tests                                                │
-│  Command: /tdd                                                    │
-│                                                                   │
-│  What happens:                                                    │
-│  - Writes tests covering the bug                                  │
-│  - Ensures regression prevention                                  │
+│  STEP 3: Add Tests                                               │
+│  Command: /tdd                                                   │
+│                                                                  │
+│  What happens:                                                   │
+│  - Writes tests covering the bug                                 │
+│  - Ensures regression prevention                                 │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 4: Verify                                                   │
-│  Command: /gsd:verify-work                                        │
-│                                                                   │
-│  What happens:                                                    │
-│  - Runs all tests                                                 │
-│  - Confirms fix works                                             │
+│  STEP 4: Verify                                                  │
+│  Command: /verify                                                │
+│                                                                  │
+│  What happens:                                                   │
+│  - Runs all tests                                                │
+│  - Confirms fix works                                            │
 └──────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Workflow 5: Code Review & Quality
+## Workflow 4: Code Review & Quality
 
 Ensure code quality before committing.
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 1: Review Code                                              │
-│  Command: /code-review                                            │
-│                                                                   │
-│  What happens:                                                    │
-│  - Analyzes code for issues                                       │
-│  - Checks patterns, security, performance                         │
-│  - Provides actionable feedback                                   │
+│  STEP 1: Review Code                                             │
+│  Command: /code-review                                           │
+│                                                                  │
+│  What happens:                                                   │
+│  - Analyzes code for issues                                      │
+│  - Checks patterns, security, performance                        │
+│  - Provides actionable feedback                                  │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 2: Fix Issues                                               │
-│  (Address review feedback)                                        │
-│                                                                   │
-│  What happens:                                                    │
-│  - Apply suggested changes                                        │
-│  - Refactor if needed                                             │
+│  STEP 2: Fix Issues                                              │
+│  (Address review feedback)                                       │
+│                                                                  │
+│  What happens:                                                   │
+│  - Apply suggested changes                                       │
+│  - Refactor if needed                                            │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 3: Check Test Coverage                                      │
-│  Command: /test-coverage                                          │
-│                                                                   │
-│  What happens:                                                    │
-│  - Analyzes current coverage                                      │
-│  - Identifies untested code                                       │
-│  - Target: 80%+ coverage                                          │
+│  STEP 3: Check Test Coverage                                     │
+│  Command: /test-coverage                                         │
+│                                                                  │
+│  What happens:                                                   │
+│  - Analyzes current coverage                                     │
+│  - Identifies untested code                                      │
+│  - Target: 80%+ coverage                                         │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 4: Run E2E Tests                                            │
-│  Command: /e2e                                                    │
-│                                                                   │
-│  What happens:                                                    │
-│  - Runs end-to-end tests                                          │
-│  - Validates full user flows                                      │
+│  STEP 4: Run E2E Tests                                           │
+│  Command: /e2e                                                   │
+│                                                                  │
+│  What happens:                                                   │
+│  - Runs end-to-end tests                                         │
+│  - Validates full user flows                                     │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
@@ -239,168 +201,156 @@ Ensure code quality before committing.
 
 ---
 
-## Workflow 6: Work Session Management
-
-Pause and resume work without losing context.
-
-```
-┌──────────────────────────────────────────────────────────────────┐
-│  PAUSING WORK                                                     │
-│  Command: /gsd:pause-work                                         │
-│                                                                   │
-│  What happens:                                                    │
-│  - Saves current state to STATE.md                                │
-│  - Records what was in progress                                   │
-│  - Notes next steps needed                                        │
-│  - Creates CONTINUE-HERE.md with context                          │
-└──────────────────────────────────────────────────────────────────┘
-
-                    ... time passes ...
-
-┌──────────────────────────────────────────────────────────────────┐
-│  RESUMING WORK                                                    │
-│  Command: /gsd:resume-work                                        │
-│                                                                   │
-│  What happens:                                                    │
-│  - Loads saved state                                              │
-│  - Restores full context                                          │
-│  - Shows where you left off                                       │
-│  - Ready to continue immediately                                  │
-└──────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## Workflow 7: Refactoring
+## Workflow 5: Refactoring
 
 Clean up and improve existing code.
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 1: Analyze Code                                             │
-│  Command: /refactor                                               │
-│                                                                   │
-│  What happens:                                                    │
-│  - Identifies improvement opportunities                           │
-│  - Suggests refactoring strategies                                │
-│  - Preserves behavior                                             │
+│  STEP 1: Analyze Code                                            │
+│  Command: /refactor                                              │
+│                                                                  │
+│  What happens:                                                   │
+│  - Identifies improvement opportunities                          │
+│  - Suggests refactoring strategies                               │
+│  - Preserves behavior                                            │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 2: Clean Dead Code (Optional)                               │
-│  Command: /refactor-clean                                         │
-│                                                                   │
-│  What happens:                                                    │
-│  - Finds unused code                                              │
-│  - Removes dead imports                                           │
-│  - Cleans up leftovers                                            │
+│  STEP 2: Clean Dead Code (Optional)                              │
+│  Command: /refactor-clean                                        │
+│                                                                  │
+│  What happens:                                                   │
+│  - Finds unused code                                             │
+│  - Removes dead imports                                          │
+│  - Cleans up leftovers                                           │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 3: Verify No Regressions                                    │
-│  Command: /tdd                                                    │
-│                                                                   │
-│  What happens:                                                    │
-│  - Runs existing tests                                            │
-│  - Ensures nothing broke                                          │
+│  STEP 3: Verify No Regressions                                   │
+│  Command: /tdd                                                   │
+│                                                                  │
+│  What happens:                                                   │
+│  - Runs existing tests                                           │
+│  - Ensures nothing broke                                         │
 └──────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Workflow 8: Build Error Resolution
+## Workflow 6: Build Error Resolution
 
 Fix build failures quickly.
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 1: Diagnose Build Error                                     │
-│  Command: /build-fix                                              │
-│                                                                   │
-│  What happens:                                                    │
-│  - Analyzes build output                                          │
-│  - Identifies root cause                                          │
-│  - Proposes fixes                                                 │
+│  STEP 1: Diagnose Build Error                                    │
+│  Command: /build-fix                                             │
+│                                                                  │
+│  What happens:                                                   │
+│  - Analyzes build output                                         │
+│  - Identifies root cause                                         │
+│  - Proposes fixes                                                │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 2: Apply Fixes                                              │
-│  (Claude implements fixes)                                        │
-│                                                                   │
-│  What happens:                                                    │
-│  - Fixes type errors                                              │
-│  - Resolves missing dependencies                                  │
-│  - Corrects syntax issues                                         │
+│  STEP 2: Apply Fixes                                             │
+│  (Claude implements fixes)                                       │
+│                                                                  │
+│  What happens:                                                   │
+│  - Fixes type errors                                             │
+│  - Resolves missing dependencies                                 │
+│  - Corrects syntax issues                                        │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  STEP 3: Verify Build                                             │
-│  (Claude runs build again)                                        │
-│                                                                   │
-│  What happens:                                                    │
-│  - Confirms build passes                                          │
-│  - Checks for new errors                                          │
+│  STEP 3: Verify Build                                            │
+│  (Claude runs build again)                                       │
+│                                                                  │
+│  What happens:                                                   │
+│  - Confirms build passes                                         │
+│  - Checks for new errors                                         │
 └──────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Workflow 9: Phase & Milestone Management
+## Workflow 7: Test-Driven Development
 
-Manage larger project structures.
+Build features with tests first.
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│  ADDING PHASES                                                    │
-│                                                                   │
-│  /gsd:add-phase      → Add phase at the end                       │
-│  /gsd:insert-phase   → Insert at specific position                │
-│  /gsd:remove-phase   → Remove a phase                             │
+│  STEP 1: Write Failing Tests (RED)                               │
+│  Command: /tdd                                                   │
+│                                                                  │
+│  What happens:                                                   │
+│  - Define expected behavior in tests                             │
+│  - Run tests - they should FAIL                                  │
 └──────────────────────────────────────────────────────────────────┘
-
+                              │
+                              ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  RESEARCHING PHASES                                               │
-│                                                                   │
-│  /gsd:research-phase → Deep research before planning              │
-│  /gsd:discuss-phase  → Discuss details and assumptions            │
+│  STEP 2: Write Minimal Implementation (GREEN)                    │
+│  (Claude writes just enough code)                                │
+│                                                                  │
+│  What happens:                                                   │
+│  - Implements minimum to pass tests                              │
+│  - Run tests - they should PASS                                  │
 └──────────────────────────────────────────────────────────────────┘
-
+                              │
+                              ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  MILESTONE WORKFLOW                                               │
-│                                                                   │
-│  /gsd:new-milestone       → Create milestone grouping phases      │
-│  /gsd:audit-milestone     → Check milestone progress              │
-│  /gsd:complete-milestone  → Mark milestone done                   │
+│  STEP 3: Refactor (IMPROVE)                                      │
+│  Command: /refactor                                              │
+│                                                                  │
+│  What happens:                                                   │
+│  - Clean up implementation                                       │
+│  - Improve naming, structure                                     │
+│  - Tests still pass                                              │
+└──────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  STEP 4: Check Coverage                                          │
+│  Command: /test-coverage                                         │
+│                                                                  │
+│  What happens:                                                   │
+│  - Verifies 80%+ coverage                                        │
+│  - Identifies gaps                                               │
 └──────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Workflow 10: Progress Tracking
+## Workflow 8: Save Progress & Learn
 
-Monitor your project status.
+Capture knowledge from your work session.
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│  CHECK PROGRESS                                                   │
-│  Command: /gsd:progress                                           │
-│                                                                   │
-│  Shows:                                                           │
-│  - Current phase and status                                       │
-│  - Completed vs remaining tasks                                   │
-│  - Milestone progress                                             │
-│  - Overall project health                                         │
+│  STEP 1: Save Checkpoint                                         │
+│  Command: /checkpoint                                            │
+│                                                                  │
+│  What happens:                                                   │
+│  - Saves current project state                                   │
+│  - Records what was accomplished                                 │
+│  - Creates restore point                                         │
 └──────────────────────────────────────────────────────────────────┘
-
+                              │
+                              ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  TASK MANAGEMENT                                                  │
-│                                                                   │
-│  /gsd:check-todos  → View pending tasks                           │
-│  /gsd:add-todo     → Add a new task                               │
+│  STEP 2: Extract Learnings                                       │
+│  Command: /learn                                                 │
+│                                                                  │
+│  What happens:                                                   │
+│  - Extracts reusable patterns from session                       │
+│  - Updates instinct files                                        │
+│  - Improves future performance                                   │
 └──────────────────────────────────────────────────────────────────┘
 ```
 
@@ -412,63 +362,50 @@ Monitor your project status.
 
 | When you want to... | Use this command |
 |---------------------|------------------|
-| Start a new project | `/gsd:new-project` |
-| Plan next phase | `/gsd:plan-phase [n]` |
-| Do the work | `/gsd:execute-phase` |
-| Check quality | `/gsd:verify-work` |
-| Quick small task | `/gsd:quick` |
-| See progress | `/gsd:progress` |
+| Plan a feature | `/plan` |
+| Write tests first | `/tdd` |
 | Fix a bug | `/debug` |
 | Review code | `/code-review` |
-| Take a break | `/gsd:pause-work` |
-| Come back | `/gsd:resume-work` |
-
-## Files Generated
-
-| File | Purpose | When Created |
-|------|---------|--------------|
-| `PROJECT.md` | Project context & requirements | `/gsd:new-project` |
-| `ROADMAP.md` | All phases & milestones | `/gsd:new-project` |
-| `PLAN.md` | Current phase tasks | `/gsd:plan-phase` |
-| `STATE.md` | Current project state | Throughout |
-| `CODEBASE.md` | Existing code map | `/gsd:map-codebase` |
+| Fix build errors | `/build-fix` |
+| Run full verification | `/verify` |
+| Check test coverage | `/test-coverage` |
+| Run E2E tests | `/e2e` |
+| Refactor code | `/refactor` |
+| Map the codebase | `/update-codemaps` |
 
 ## Decision Tree
 
 ```
 What do you need to do?
 │
-├─► Start new project
-│   └─► /gsd:new-project
+├─► Build a new feature
+│   └─► /plan → /tdd → implement → /verify
 │
-├─► Work on existing project
-│   ├─► First time? → /gsd:map-codebase → /gsd:new-project
-│   └─► Already set up? → /gsd:resume-work
-│
-├─► Small quick task
-│   └─► /gsd:quick
+├─► Understand existing code
+│   └─► /update-codemaps → /update-docs
 │
 ├─► Fix a bug
-│   └─► /debug
+│   └─► /debug → fix → /tdd → /verify
 │
 ├─► Review code quality
-│   └─► /code-review → /tdd → /gsd:verify-work
+│   └─► /code-review → /test-coverage → /e2e
 │
 ├─► Build is broken
 │   └─► /build-fix
 │
-├─► Need to stop working
-│   └─► /gsd:pause-work
+├─► Clean up code
+│   └─► /refactor → /refactor-clean → /tdd
 │
-└─► Check where I am
-    └─► /gsd:progress
+├─► Save progress
+│   └─► /checkpoint → /learn
+│
+└─► Go-specific work
+    └─► /go-build, /go-review, /go-test
 ```
 
 ---
 
-## All Commands
-
-### General Commands (21)
+## All Commands (21)
 
 | Command | Description |
 |---------|-------------|
@@ -494,54 +431,16 @@ What do you need to do?
 | `/update-docs` | Sync documentation from source |
 | `/verify` | Automated build/lint/test verification |
 
-### GSD Commands (27)
-
-| Command | Description |
-|---------|-------------|
-| `/gsd:new-project` | Initialize new project with deep questioning |
-| `/gsd:plan-phase` | Create executable phase plan |
-| `/gsd:execute-phase` | Execute current phase |
-| `/gsd:verify-work` | User acceptance testing |
-| `/gsd:progress` | Show project progress |
-| `/gsd:quick` | Quick task without planning |
-| `/gsd:pause-work` | Save state and pause |
-| `/gsd:resume-work` | Resume with full context |
-| `/gsd:map-codebase` | Map existing codebase |
-| `/gsd:add-phase` | Add phase at end |
-| `/gsd:insert-phase` | Insert phase at position |
-| `/gsd:remove-phase` | Remove a phase |
-| `/gsd:research-phase` | Deep research for phase |
-| `/gsd:discuss-phase` | Discuss phase details |
-| `/gsd:list-phase-assumptions` | List phase assumptions |
-| `/gsd:new-milestone` | Create milestone |
-| `/gsd:complete-milestone` | Mark milestone done |
-| `/gsd:audit-milestone` | Validate milestone |
-| `/gsd:plan-milestone-gaps` | Identify gaps in milestone |
-| `/gsd:check-todos` | View pending tasks |
-| `/gsd:add-todo` | Add a todo item |
-| `/gsd:debug` | Systematic debugging with agents |
-| `/gsd:settings` | View/edit GSD settings |
-| `/gsd:set-profile` | Set model profile |
-| `/gsd:update` | Update GSD configuration |
-| `/gsd:help` | Get help |
-| `/gsd:join-discord` | Join Discord community |
-
 ---
 
 ## File Structure
 
 ```
 .claude/
-├── agents/                 # 23 AI agent definitions
-├── commands/               # 48 CLI commands
-│   └── gsd/               # GSD-specific commands
+├── agents/                # 12 AI agent definitions
+├── commands/              # 21 CLI commands
 ├── skills/                # 16 reusable knowledge modules
 ├── rules/                 # 8 behavioral guidelines
-├── hooks/                 # Session lifecycle hooks
-├── get-shit-done/         # GSD framework
-│   ├── templates/         # Project templates
-│   ├── references/        # Reference materials
-│   └── workflows/         # Workflow definitions
 └── settings.json          # Core configuration
 ```
 
