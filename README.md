@@ -341,6 +341,12 @@ Capture knowledge from your work session.
 | Run E2E tests | `/e2e` |
 | Clean up code | `/refactor-clean` |
 | Map the codebase | `/update-codemaps` |
+| Fix Python errors | `/py-fix` |
+| Review Python code | `/py-review` |
+| Python TDD | `/py-test` |
+| Fix Go build errors | `/go-build` |
+| Review Go code | `/go-review` |
+| Go TDD | `/go-test` |
 
 ## Decision Tree
 
