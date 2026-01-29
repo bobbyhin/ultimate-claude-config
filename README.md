@@ -427,7 +427,7 @@ What do you need to do?
 | `/build-fix` | Fix TypeScript/JavaScript build errors |
 | `/checkpoint` | Save and verify project checkpoints |
 | `/code-review` | Comprehensive code review |
-| `/debug` | Quick debugging checklist |
+| `/debug` | Systematic debugging with root cause analysis |
 | `/e2e` | Run end-to-end tests |
 | `/eval` | Eval-driven development workflow |
 | `/go-build` | Fix Go build errors |
