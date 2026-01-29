@@ -28,7 +28,12 @@ cp everything-claude-code/commands/*.md ~/.claude/commands/
 
 # Copy skills
 cp -r everything-claude-code/skills/* ~/.claude/skills/
+
+# Copy settings (enables Context7 MCP for up-to-date docs)
+cp everything-claude-code/settings.json ~/.claude/settings.json
 ```
+
+> **Note:** `settings.json` configures [Context7 MCP](https://github.com/upstash/context7) which gives Claude access to up-to-date library documentation. Requires `npx` (Node.js).
 
 ---
 
@@ -453,6 +458,7 @@ What do you need to do?
 ├── commands/              # 19 CLI commands
 ├── skills/                # 16 reusable knowledge modules
 ├── rules/                 # 8 behavioral guidelines
+├── settings.json          # MCP server config (Context7)
 ├── CLAUDE-TEMPLATE.md     # Project README template
 └── README.md              # This documentation
 ```
