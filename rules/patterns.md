@@ -40,6 +40,19 @@ type ApiResponse[T any] struct {
 }
 ```
 
+### Dart
+```dart
+@freezed
+class ApiResponse<T> with _$ApiResponse<T> {
+  const factory ApiResponse({
+    required bool success,
+    T? data,
+    String? error,
+    Meta? meta,
+  }) = _ApiResponse;
+}
+```
+
 ## Repository Pattern
 
 ### TypeScript/JavaScript
@@ -78,6 +91,17 @@ type Repository[T any] interface {
     Create(ctx context.Context, data CreateDTO) (*T, error)
     Update(ctx context.Context, id string, data UpdateDTO) (*T, error)
     Delete(ctx context.Context, id string) error
+}
+```
+
+### Dart
+```dart
+abstract class Repository<T> {
+  Future<List<T>> findAll({Map<String, dynamic>? filters});
+  Future<T?> findById(String id);
+  Future<T> create(CreateDTO data);
+  Future<T> update(String id, UpdateDTO data);
+  Future<void> delete(String id);
 }
 ```
 
@@ -122,6 +146,16 @@ type UserService struct {
 
 func NewUserService(repo UserRepository, cache Cache) *UserService {
     return &UserService{repo: repo, cache: cache}
+}
+```
+
+### Dart (Riverpod)
+```dart
+@riverpod
+UserService userService(ref) {
+  final repo = ref.watch(userRepositoryProvider);
+  final cache = ref.watch(cacheProvider);
+  return UserService(repo: repo, cache: cache);
 }
 ```
 

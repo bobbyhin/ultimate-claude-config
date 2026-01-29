@@ -55,6 +55,19 @@ if apiKey == "" {
 }
 ```
 
+### Dart
+```dart
+// NEVER: Hardcoded secrets
+const apiKey = 'sk-proj-xxxxx';
+
+// ALWAYS: Compile-time environment or secure storage
+const apiKey = String.fromEnvironment('OPENAI_API_KEY');
+
+// For runtime secrets: flutter_secure_storage
+final storage = FlutterSecureStorage();
+final apiKey = await storage.read(key: 'openai_api_key');
+```
+
 ## SQL Injection Prevention
 
 ### TypeScript/JavaScript
@@ -85,6 +98,15 @@ db.Query(fmt.Sprintf("SELECT * FROM users WHERE id = '%s'", id))
 
 // ALWAYS: Parameterized queries
 db.QueryRow("SELECT * FROM users WHERE id = $1", id)
+```
+
+### Dart (sqflite)
+```dart
+// NEVER: String interpolation in query
+db.rawQuery('SELECT * FROM users WHERE id = $userId');
+
+// ALWAYS: Parameterized queries
+db.query('users', where: 'id = ?', whereArgs: [userId]);
 ```
 
 ## Security Response Protocol

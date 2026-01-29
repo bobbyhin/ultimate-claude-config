@@ -10,6 +10,7 @@ Check for these marker files in the project root:
 |-------------|-------------|-----------|
 | `pyproject.toml`, `requirements.txt` | Python | ruff, pyright, pytest, uv |
 | `go.mod` | Go | go vet, golangci-lint, go test |
+| `pubspec.yaml` | Dart/Flutter | dart analyze, dart format, flutter test |
 | `package.json` + `tsconfig.json` | TypeScript | tsc, eslint, vitest/jest |
 | `package.json` (no tsconfig) | JavaScript | eslint, vitest/jest |
 
@@ -44,6 +45,24 @@ go vet ./...
 go test ./...
 ```
 
+### Dart/Flutter
+```bash
+# Lint + Type check
+dart analyze
+
+# Format
+dart format .
+
+# Auto-fix
+dart fix --apply
+
+# Test
+flutter test
+
+# Package management
+flutter pub add <package>
+```
+
 ### TypeScript/JavaScript
 ```bash
 # Build
@@ -71,4 +90,5 @@ If multiple markers exist (e.g., `pyproject.toml` + `package.json`):
 When the user asks for help without specifying a language:
 - Python project → prefer `py-reviewer`, `py-error-resolver` agents
 - Go project → prefer `go-reviewer`, `go-build-resolver` agents
+- Dart/Flutter project → prefer `dart-reviewer`, `dart-error-resolver` agents
 - TS/JS project → prefer `code-reviewer`, `build-error-resolver` agents

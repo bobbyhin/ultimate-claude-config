@@ -55,6 +55,22 @@ func updateUser(u User, name string) User {
 }
 ```
 
+### Dart
+```dart
+// WRONG: Mutation
+void updateUser(User user, String name) {
+  user.name = name;  // MUTATION!
+}
+
+// CORRECT: Immutable with freezed + copyWith
+@freezed
+class User with _$User {
+  const factory User({required String name, required String email}) = _User;
+}
+
+final updated = user.copyWith(name: 'new_name');
+```
+
 ## File Organization
 
 MANY SMALL FILES > FEW LARGE FILES:
@@ -96,6 +112,17 @@ if err != nil {
 }
 ```
 
+### Dart
+```dart
+try {
+  final result = await riskyOperation();
+  return result;
+} on SpecificException catch (e) {
+  debugPrint('Operation failed: $e');
+  throw AppException('Detailed user-friendly message');
+}
+```
+
 ## Input Validation
 
 ALWAYS validate user input:
@@ -131,6 +158,23 @@ type UserInput struct {
 }
 
 err := validate.Struct(input)
+```
+
+### Dart
+```dart
+class UserInput {
+  final String email;
+  final int age;
+
+  UserInput({required this.email, required this.age}) {
+    if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email)) {
+      throw FormatException('Invalid email');
+    }
+    if (age < 0 || age > 150) {
+      throw RangeError('Age must be 0-150');
+    }
+  }
+}
 ```
 
 ## Code Quality Checklist

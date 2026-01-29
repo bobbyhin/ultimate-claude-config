@@ -9,7 +9,7 @@
 ## Current Hooks (in ~/.claude/settings.json)
 
 ### PreToolUse
-- **tmux reminder**: Suggests tmux for long-running commands (npm, pnpm, yarn, cargo, uv, go, etc.)
+- **tmux reminder**: Suggests tmux for long-running commands (npm, pnpm, yarn, cargo, uv, go, flutter, dart, etc.)
 - **git push review**: Opens editor for review before push
 - **doc blocker**: Blocks creation of unnecessary .md/.txt files
 
@@ -19,14 +19,17 @@
   - TypeScript/JavaScript: Prettier
   - Python: `ruff format`
   - Go: `gofmt`
+  - Dart: `dart format`
 - **Type check**: Runs type checker after editing source files
   - TypeScript: `tsc` on .ts/.tsx files
   - Python: `pyright` on .py files
   - Go: `go vet` on .go files
+  - Dart: `dart analyze` on .dart files
 - **Debug statement warning**: Warns about debug statements in edited files
   - TypeScript/JavaScript: `console.log`
   - Python: `print()`, `breakpoint()`
   - Go: `fmt.Println`
+  - Dart: `print()`
 
 ### Stop
 - **Debug statement audit**: Checks all modified files for debug statements before session ends

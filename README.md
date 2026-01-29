@@ -6,9 +6,9 @@ A comprehensive configuration framework for Claude Code that transforms Claude i
 
 | Component | Count | Description |
 |-----------|-------|-------------|
-| Agents | 14 | Specialized AI agents for different tasks |
-| Commands | 22 | Executable workflow commands |
-| Skills | 18 | Reusable knowledge modules |
+| Agents | 16 | Specialized AI agents for different tasks |
+| Commands | 25 | Executable workflow commands |
+| Skills | 20 | Reusable knowledge modules |
 | Rules | 9 | Behavioral guidelines |
 
 ## Installation
@@ -347,6 +347,9 @@ Capture knowledge from your work session.
 | Fix Go build errors | `/go-build` |
 | Review Go code | `/go-review` |
 | Go TDD | `/go-test` |
+| Fix Dart/Flutter errors | `/dart-fix` |
+| Review Dart code | `/dart-review` |
+| Flutter TDD | `/dart-test` |
 
 ## Decision Tree
 
@@ -374,6 +377,9 @@ What do you need to do?
 ├─► Python-specific work
 │   └─► /py-fix, /py-review, /py-test
 │
+├─► Dart/Flutter-specific work
+│   └─► /dart-fix, /dart-review, /dart-test
+│
 └─► Go-specific work
     └─► /go-build, /go-review, /go-test
 ```
@@ -382,13 +388,16 @@ What do you need to do?
 
 # Component Reference
 
-## All Commands (22)
+## All Commands (25)
 
 | Command | Description |
 |---------|-------------|
 | `/build-fix` | Fix TypeScript/JavaScript build errors |
 | `/checkpoint` | Save and verify project checkpoints |
 | `/code-review` | Comprehensive code review |
+| `/dart-fix` | Fix Dart analyzer/lint/runtime errors |
+| `/dart-review` | Flutter/Dart code review |
+| `/dart-test` | Flutter TDD with widget and unit tests |
 | `/e2e` | Run end-to-end tests |
 | `/eval` | Eval-driven development workflow |
 | `/go-build` | Fix Go build errors |
@@ -409,13 +418,15 @@ What do you need to do?
 | `/update-docs` | Sync documentation from source |
 | `/verify` | Automated build/lint/test verification |
 
-## All Agents (14)
+## All Agents (16)
 
 | Agent | Description |
 |-------|-------------|
 | `architect` | System design, scalability, and technical decisions |
 | `build-error-resolver` | Fix build/TypeScript errors with minimal diffs |
 | `code-reviewer` | Code quality, security, and maintainability review |
+| `dart-error-resolver` | Fix Dart analyzer/lint/runtime errors with minimal changes |
+| `dart-reviewer` | Flutter/Dart code review for patterns and performance |
 | `database-reviewer` | PostgreSQL query optimization and schema design |
 | `doc-updater` | Documentation and codemap generation |
 | `e2e-runner` | End-to-end testing with browser automation |
@@ -428,7 +439,7 @@ What do you need to do?
 | `security-reviewer` | OWASP Top 10 vulnerability detection |
 | `tdd-guide` | Test-driven development with 80%+ coverage |
 
-## All Skills (18)
+## All Skills (20)
 
 | Skill | Description |
 |-------|-------------|
@@ -436,6 +447,8 @@ What do you need to do?
 | `clickhouse-io` | ClickHouse analytics and data engineering patterns |
 | `coding-standards` | TypeScript/JavaScript/React coding best practices |
 | `continuous-learning-v2` | Instinct-based learning with confidence scoring |
+| `dart-patterns` | Flutter/Dart state management, MVVM, Riverpod, freezed |
+| `dart-testing` | Flutter unit, widget, and integration tests with Mocktail |
 | `eval-harness` | Eval-driven development (EDD) framework |
 | `frontend-patterns` | React/Next.js UI and state management patterns |
 | `golang-patterns` | Idiomatic Go patterns and conventions |
@@ -471,9 +484,9 @@ What do you need to do?
 
 ```
 .claude/
-├── agents/                # 14 AI agent definitions
-├── commands/              # 22 CLI commands
-├── skills/                # 18 reusable knowledge modules
+├── agents/                # 16 AI agent definitions
+├── commands/              # 25 CLI commands
+├── skills/                # 20 reusable knowledge modules
 ├── rules/                 # 9 behavioral guidelines
 ├── settings.json          # MCP server config (Context7)
 ├── CLAUDE-TEMPLATE.md     # Project README template
