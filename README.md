@@ -6,10 +6,10 @@ A comprehensive configuration framework for Claude Code that transforms Claude i
 
 | Component | Count | Description |
 |-----------|-------|-------------|
-| Agents | 12 | Specialized AI agents for different tasks |
-| Commands | 19 | Executable workflow commands |
-| Skills | 16 | Reusable knowledge modules |
-| Rules | 8 | Behavioral guidelines |
+| Agents | 16 | Specialized AI agents for different tasks |
+| Commands | 25 | Executable workflow commands |
+| Skills | 20 | Reusable knowledge modules |
+| Rules | 9 | Behavioral guidelines |
 
 ## Installation
 
@@ -28,7 +28,12 @@ cp everything-claude-code/commands/*.md ~/.claude/commands/
 
 # Copy skills
 cp -r everything-claude-code/skills/* ~/.claude/skills/
+
+# Copy settings (enables Context7 MCP for up-to-date docs)
+cp everything-claude-code/settings.json ~/.claude/settings.json
 ```
+
+> **Note:** `settings.json` configures [Context7 MCP](https://github.com/upstash/context7) which gives Claude access to up-to-date library documentation. Requires `npx` (Node.js).
 
 ---
 
@@ -336,6 +341,15 @@ Capture knowledge from your work session.
 | Run E2E tests | `/e2e` |
 | Clean up code | `/refactor-clean` |
 | Map the codebase | `/update-codemaps` |
+| Fix Python errors | `/py-fix` |
+| Review Python code | `/py-review` |
+| Python TDD | `/py-test` |
+| Fix Go build errors | `/go-build` |
+| Review Go code | `/go-review` |
+| Go TDD | `/go-test` |
+| Fix Dart/Flutter errors | `/dart-fix` |
+| Review Dart code | `/dart-review` |
+| Flutter TDD | `/dart-test` |
 
 ## Decision Tree
 
@@ -360,6 +374,12 @@ What do you need to do?
 ├─► Save progress
 │   └─► /checkpoint → /learn
 │
+├─► Python-specific work
+│   └─► /py-fix, /py-review, /py-test
+│
+├─► Dart/Flutter-specific work
+│   └─► /dart-fix, /dart-review, /dart-test
+│
 └─► Go-specific work
     └─► /go-build, /go-review, /go-test
 ```
@@ -368,13 +388,16 @@ What do you need to do?
 
 # Component Reference
 
-## All Commands (19)
+## All Commands (25)
 
 | Command | Description |
 |---------|-------------|
 | `/build-fix` | Fix TypeScript/JavaScript build errors |
 | `/checkpoint` | Save and verify project checkpoints |
 | `/code-review` | Comprehensive code review |
+| `/dart-fix` | Fix Dart analyzer/lint/runtime errors |
+| `/dart-review` | Flutter/Dart code review |
+| `/dart-test` | Flutter TDD with widget and unit tests |
 | `/e2e` | Run end-to-end tests |
 | `/eval` | Eval-driven development workflow |
 | `/go-build` | Fix Go build errors |
@@ -383,6 +406,9 @@ What do you need to do?
 | `/learn` | Extract reusable patterns from session |
 | `/orchestrate` | Multi-agent workflow orchestration |
 | `/plan` | Quick feature planning |
+| `/py-fix` | Fix Python ruff/pyright/runtime errors |
+| `/py-review` | Python/FastAPI code review |
+| `/py-test` | Python TDD with pytest |
 | `/refactor-clean` | Remove dead code safely with analysis tools |
 | `/setup-pm` | Setup package manager |
 | `/skill-create` | Create skills from git history |
@@ -392,24 +418,28 @@ What do you need to do?
 | `/update-docs` | Sync documentation from source |
 | `/verify` | Automated build/lint/test verification |
 
-## All Agents (12)
+## All Agents (16)
 
 | Agent | Description |
 |-------|-------------|
 | `architect` | System design, scalability, and technical decisions |
 | `build-error-resolver` | Fix build/TypeScript errors with minimal diffs |
 | `code-reviewer` | Code quality, security, and maintainability review |
+| `dart-error-resolver` | Fix Dart analyzer/lint/runtime errors with minimal changes |
+| `dart-reviewer` | Flutter/Dart code review for patterns and performance |
 | `database-reviewer` | PostgreSQL query optimization and schema design |
 | `doc-updater` | Documentation and codemap generation |
 | `e2e-runner` | End-to-end testing with browser automation |
 | `go-build-resolver` | Go build and compilation error resolution |
 | `go-reviewer` | Idiomatic Go review, concurrency, and error handling |
 | `planner` | Complex feature and refactoring planning |
+| `py-error-resolver` | Fix Python ruff/pyright/runtime errors with minimal changes |
+| `py-reviewer` | Python/FastAPI code review for patterns and security |
 | `refactor-cleaner` | Dead code cleanup and consolidation |
 | `security-reviewer` | OWASP Top 10 vulnerability detection |
 | `tdd-guide` | Test-driven development with 80%+ coverage |
 
-## All Skills (16)
+## All Skills (20)
 
 | Skill | Description |
 |-------|-------------|
@@ -417,6 +447,8 @@ What do you need to do?
 | `clickhouse-io` | ClickHouse analytics and data engineering patterns |
 | `coding-standards` | TypeScript/JavaScript/React coding best practices |
 | `continuous-learning-v2` | Instinct-based learning with confidence scoring |
+| `dart-patterns` | Flutter/Dart state management, MVVM, Riverpod, freezed |
+| `dart-testing` | Flutter unit, widget, and integration tests with Mocktail |
 | `eval-harness` | Eval-driven development (EDD) framework |
 | `frontend-patterns` | React/Next.js UI and state management patterns |
 | `golang-patterns` | Idiomatic Go patterns and conventions |
@@ -424,13 +456,15 @@ What do you need to do?
 | `iterative-retrieval` | Progressive context retrieval for subagents |
 | `postgres-patterns` | PostgreSQL optimization based on Supabase practices |
 | `project-guidelines-example` | Template for project-specific skill creation |
+| `python-patterns` | FastAPI, Pydantic v2, async, uv, ruff, pyright patterns |
+| `python-testing` | pytest fixtures, parametrize, async testing, coverage |
 | `security-review` | Authentication, input handling, and secrets checklist |
 | `session-start-hook` | Startup hooks for Claude Code web sessions |
 | `strategic-compact` | Manual context compaction at logical intervals |
 | `tdd-workflow` | TDD methodology with 80%+ coverage target |
 | `verification-loop` | Comprehensive verification system for sessions |
 
-## All Rules (8)
+## All Rules (9)
 
 | Rule | Description |
 |------|-------------|
@@ -440,6 +474,7 @@ What do you need to do?
 | `hooks` | Hook types and PreToolUse validation |
 | `patterns` | API response format and implementation patterns |
 | `performance` | Model selection strategy for cost efficiency |
+| `project-detection` | Auto-detect project type and select correct toolchain |
 | `security` | Mandatory security checks before commits |
 | `testing` | Minimum 80% coverage with required test types |
 
@@ -449,10 +484,11 @@ What do you need to do?
 
 ```
 .claude/
-├── agents/                # 12 AI agent definitions
-├── commands/              # 19 CLI commands
-├── skills/                # 16 reusable knowledge modules
-├── rules/                 # 8 behavioral guidelines
+├── agents/                # 16 AI agent definitions
+├── commands/              # 25 CLI commands
+├── skills/                # 20 reusable knowledge modules
+├── rules/                 # 9 behavioral guidelines
+├── settings.json          # MCP server config (Context7)
 ├── CLAUDE-TEMPLATE.md     # Project README template
 └── README.md              # This documentation
 ```

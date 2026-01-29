@@ -35,7 +35,7 @@ The planner agent will:
 
 ## Example Usage
 
-```
+````
 User: /plan I need to add real-time notifications when markets resolve
 
 Agent (planner):
@@ -89,7 +89,7 @@ Agent (planner):
 - Total: 9-13 hours
 
 **WAITING FOR CONFIRMATION**: Proceed with this plan? (yes/no/modify)
-```
+````
 
 ## Important Notes
 
@@ -104,7 +104,7 @@ If you want changes, respond with:
 
 After planning:
 - Use `/tdd` to implement with test-driven development
-- Use `/build-and-fix` if build errors occur
+- Use `/build-fix` if build errors occur
 - Use `/code-review` to review completed implementation
 
 ## Related Agents

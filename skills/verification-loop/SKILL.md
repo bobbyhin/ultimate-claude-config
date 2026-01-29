@@ -1,3 +1,8 @@
+---
+name: verification-loop
+description: Comprehensive build/type/lint/test/security verification loop for CI and pre-commit checks
+---
+
 # Verification Loop Skill
 
 A comprehensive verification system for Claude Code sessions.

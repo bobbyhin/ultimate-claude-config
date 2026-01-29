@@ -48,7 +48,7 @@ REPEAT:   Next feature/scenario
 
 ## Example Usage
 
-```
+````
 User: /tdd I need a function to calculate market liquidity score
 
 Agent (tdd-guide):
@@ -251,7 +251,7 @@ Coverage: 100% ✅ (Target: 80%)
 ```
 
 ✅ TDD session complete!
-```
+````
 
 ## TDD Best Practices
 
@@ -313,7 +313,7 @@ Never skip the RED phase. Never write code before tests.
 
 - Use `/plan` first to understand what to build
 - Use `/tdd` to implement with tests
-- Use `/build-and-fix` if build errors occur
+- Use `/build-fix` if build errors occur
 - Use `/code-review` to review implementation
 - Use `/test-coverage` to verify coverage
 

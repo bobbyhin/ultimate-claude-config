@@ -43,7 +43,7 @@ go mod tidy -v
 
 ## Example Session
 
-```text
+````text
 User: /go-build
 
 Agent:
@@ -141,7 +141,7 @@ ok      project/internal/handler   0.023s
 | Remaining issues | 0 |
 
 Build Status: ✅ SUCCESS
-```
+````
 
 ## Common Errors Fixed
 

@@ -106,7 +106,7 @@ Prefix commits with: feat:, fix:, chore:, docs:, test:, refactor:
 
 Running `/skill-create` on a TypeScript project might produce:
 
-```markdown
+````markdown
 ---
 name: my-app-patterns
 description: Coding patterns from my-app repository
@@ -153,7 +153,7 @@ src/
 - Test files: `__tests__/` directories or `.test.ts` suffix
 - Coverage target: 80%+
 - Framework: Vitest
-```
+````
 
 ## GitHub App Integration
 
