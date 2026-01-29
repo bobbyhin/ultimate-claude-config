@@ -6,9 +6,9 @@ A comprehensive configuration framework for Claude Code that transforms Claude i
 
 | Component | Count | Description |
 |-----------|-------|-------------|
-| Agents | 12 | Specialized AI agents for different tasks |
-| Commands | 19 | Executable workflow commands |
-| Skills | 16 | Reusable knowledge modules |
+| Agents | 14 | Specialized AI agents for different tasks |
+| Commands | 22 | Executable workflow commands |
+| Skills | 18 | Reusable knowledge modules |
 | Rules | 8 | Behavioral guidelines |
 
 ## Installation
@@ -365,6 +365,9 @@ What do you need to do?
 ├─► Save progress
 │   └─► /checkpoint → /learn
 │
+├─► Python-specific work
+│   └─► /py-fix, /py-review, /py-test
+│
 └─► Go-specific work
     └─► /go-build, /go-review, /go-test
 ```
@@ -373,7 +376,7 @@ What do you need to do?
 
 # Component Reference
 
-## All Commands (19)
+## All Commands (22)
 
 | Command | Description |
 |---------|-------------|
@@ -388,6 +391,9 @@ What do you need to do?
 | `/learn` | Extract reusable patterns from session |
 | `/orchestrate` | Multi-agent workflow orchestration |
 | `/plan` | Quick feature planning |
+| `/py-fix` | Fix Python ruff/pyright/runtime errors |
+| `/py-review` | Python/FastAPI code review |
+| `/py-test` | Python TDD with pytest |
 | `/refactor-clean` | Remove dead code safely with analysis tools |
 | `/setup-pm` | Setup package manager |
 | `/skill-create` | Create skills from git history |
@@ -397,7 +403,7 @@ What do you need to do?
 | `/update-docs` | Sync documentation from source |
 | `/verify` | Automated build/lint/test verification |
 
-## All Agents (12)
+## All Agents (14)
 
 | Agent | Description |
 |-------|-------------|
@@ -410,11 +416,13 @@ What do you need to do?
 | `go-build-resolver` | Go build and compilation error resolution |
 | `go-reviewer` | Idiomatic Go review, concurrency, and error handling |
 | `planner` | Complex feature and refactoring planning |
+| `py-error-resolver` | Fix Python ruff/pyright/runtime errors with minimal changes |
+| `py-reviewer` | Python/FastAPI code review for patterns and security |
 | `refactor-cleaner` | Dead code cleanup and consolidation |
 | `security-reviewer` | OWASP Top 10 vulnerability detection |
 | `tdd-guide` | Test-driven development with 80%+ coverage |
 
-## All Skills (16)
+## All Skills (18)
 
 | Skill | Description |
 |-------|-------------|
@@ -429,6 +437,8 @@ What do you need to do?
 | `iterative-retrieval` | Progressive context retrieval for subagents |
 | `postgres-patterns` | PostgreSQL optimization based on Supabase practices |
 | `project-guidelines-example` | Template for project-specific skill creation |
+| `python-patterns` | FastAPI, Pydantic v2, async, uv, ruff, pyright patterns |
+| `python-testing` | pytest fixtures, parametrize, async testing, coverage |
 | `security-review` | Authentication, input handling, and secrets checklist |
 | `session-start-hook` | Startup hooks for Claude Code web sessions |
 | `strategic-compact` | Manual context compaction at logical intervals |
@@ -454,9 +464,9 @@ What do you need to do?
 
 ```
 .claude/
-├── agents/                # 12 AI agent definitions
-├── commands/              # 19 CLI commands
-├── skills/                # 16 reusable knowledge modules
+├── agents/                # 14 AI agent definitions
+├── commands/              # 22 CLI commands
+├── skills/                # 18 reusable knowledge modules
 ├── rules/                 # 8 behavioral guidelines
 ├── settings.json          # MCP server config (Context7)
 ├── CLAUDE-TEMPLATE.md     # Project README template
