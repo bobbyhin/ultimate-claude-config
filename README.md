@@ -453,7 +453,9 @@ What do you need to do?
 ├── agents/                # 12 AI agent definitions
 ├── commands/              # 21 CLI commands
 ├── skills/                # 16 reusable knowledge modules
-└── rules/                 # 8 behavioral guidelines
+├── rules/                 # 8 behavioral guidelines
+├── CLAUDE-TEMPLATE.md     # Project README template
+└── README.md              # This documentation
 ```
 
 ## License
