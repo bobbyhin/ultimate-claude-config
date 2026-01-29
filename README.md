@@ -9,7 +9,7 @@ A comprehensive configuration framework for Claude Code that transforms Claude i
 | Agents | 14 | Specialized AI agents for different tasks |
 | Commands | 22 | Executable workflow commands |
 | Skills | 18 | Reusable knowledge modules |
-| Rules | 8 | Behavioral guidelines |
+| Rules | 9 | Behavioral guidelines |
 
 ## Installation
 
@@ -451,7 +451,7 @@ What do you need to do?
 | `tdd-workflow` | TDD methodology with 80%+ coverage target |
 | `verification-loop` | Comprehensive verification system for sessions |
 
-## All Rules (8)
+## All Rules (9)
 
 | Rule | Description |
 |------|-------------|
@@ -461,6 +461,7 @@ What do you need to do?
 | `hooks` | Hook types and PreToolUse validation |
 | `patterns` | API response format and implementation patterns |
 | `performance` | Model selection strategy for cost efficiency |
+| `project-detection` | Auto-detect project type and select correct toolchain |
 | `security` | Mandatory security checks before commits |
 | `testing` | Minimum 80% coverage with required test types |
 
@@ -473,7 +474,7 @@ What do you need to do?
 ├── agents/                # 14 AI agent definitions
 ├── commands/              # 22 CLI commands
 ├── skills/                # 18 reusable knowledge modules
-├── rules/                 # 8 behavioral guidelines
+├── rules/                 # 9 behavioral guidelines
 ├── settings.json          # MCP server config (Context7)
 ├── CLAUDE-TEMPLATE.md     # Project README template
 └── README.md              # This documentation
