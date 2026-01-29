@@ -1,7 +1,7 @@
 ---
 name: planner
 description: Expert planning specialist for complex features and refactoring. Use PROACTIVELY when users request feature implementation, architectural changes, or complex refactoring. Automatically activated for planning tasks.
-tools: ["Read", "Bash", "Grep", "Glob", "WebFetch", "mcp__context7__*"]
+tools: ["Read", "Bash", "Grep", "Glob", "WebFetch", "WebSearch", "mcp__context7__*"]
 model: opus
 ---
 
