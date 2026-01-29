@@ -14,7 +14,7 @@ A comprehensive configuration framework for Claude Code that transforms Claude i
 ## Installation
 
 ```bash
-cp -r agents commands skills rules settings.json /path/to/your-project/.claude/
+cp -r agents commands skills rules /path/to/your-project/.claude/
 ```
 
 ---
@@ -440,8 +440,7 @@ What do you need to do?
 ├── agents/                # 12 AI agent definitions
 ├── commands/              # 21 CLI commands
 ├── skills/                # 16 reusable knowledge modules
-├── rules/                 # 8 behavioral guidelines
-└── settings.json          # Core configuration
+└── rules/                 # 8 behavioral guidelines
 ```
 
 ## License
