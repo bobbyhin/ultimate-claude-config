@@ -48,7 +48,7 @@ REPEAT:   Next feature/scenario
 
 ## Example Usage
 
-```
+````
 User: /tdd I need a function to calculate market liquidity score
 
 Agent (tdd-guide):
@@ -251,7 +251,7 @@ Coverage: 100% ✅ (Target: 80%)
 ```
 
 ✅ TDD session complete!
-```
+````
 
 ## TDD Best Practices
 

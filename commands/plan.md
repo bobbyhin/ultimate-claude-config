@@ -35,7 +35,7 @@ The planner agent will:
 
 ## Example Usage
 
-```
+````
 User: /plan I need to add real-time notifications when markets resolve
 
 Agent (planner):
@@ -89,7 +89,7 @@ Agent (planner):
 - Total: 9-13 hours
 
 **WAITING FOR CONFIRMATION**: Proceed with this plan? (yes/no/modify)
-```
+````
 
 ## Important Notes
 

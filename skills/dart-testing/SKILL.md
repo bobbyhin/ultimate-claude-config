@@ -1,3 +1,8 @@
+---
+name: dart-testing
+description: Flutter unit, widget, and integration tests with Mocktail, bloc_test, and coverage targets
+---
+
 # Flutter/Dart Testing
 
 ## When to Activate

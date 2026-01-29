@@ -1,3 +1,8 @@
+---
+name: dart-patterns
+description: Flutter/Dart state management, MVVM architecture, Riverpod, freezed, and performance patterns
+---
+
 # Flutter/Dart Patterns
 
 ## When to Activate

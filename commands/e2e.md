@@ -36,7 +36,7 @@ The e2e-runner agent will:
 
 ## Example Usage
 
-```
+````
 User: /e2e Test the market search and view flow
 
 Agent (e2e-runner):
@@ -200,7 +200,7 @@ View report: npx playwright show-report
 ```
 
 ✅ E2E test suite ready for CI/CD integration!
-```
+````
 
 ## Test Artifacts
 
