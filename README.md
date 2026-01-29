@@ -418,6 +418,8 @@ What do you need to do?
 
 ---
 
+# Component Reference
+
 ## All Commands (21)
 
 | Command | Description |
@@ -443,6 +445,57 @@ What do you need to do?
 | `/update-codemaps` | Update codebase documentation |
 | `/update-docs` | Sync documentation from source |
 | `/verify` | Automated build/lint/test verification |
+
+## All Agents (12)
+
+| Agent | Description |
+|-------|-------------|
+| `architect` | System design, scalability, and technical decisions |
+| `build-error-resolver` | Fix build/TypeScript errors with minimal diffs |
+| `code-reviewer` | Code quality, security, and maintainability review |
+| `database-reviewer` | PostgreSQL query optimization and schema design |
+| `doc-updater` | Documentation and codemap generation |
+| `e2e-runner` | End-to-end testing with browser automation |
+| `go-build-resolver` | Go build and compilation error resolution |
+| `go-reviewer` | Idiomatic Go review, concurrency, and error handling |
+| `planner` | Complex feature and refactoring planning |
+| `refactor-cleaner` | Dead code cleanup and consolidation |
+| `security-reviewer` | OWASP Top 10 vulnerability detection |
+| `tdd-guide` | Test-driven development with 80%+ coverage |
+
+## All Skills (16)
+
+| Skill | Description |
+|-------|-------------|
+| `backend-patterns` | Node.js/Express/Next.js API design and optimization |
+| `clickhouse-io` | ClickHouse analytics and data engineering patterns |
+| `coding-standards` | TypeScript/JavaScript/React coding best practices |
+| `continuous-learning-v2` | Instinct-based learning with confidence scoring |
+| `eval-harness` | Eval-driven development (EDD) framework |
+| `frontend-patterns` | React/Next.js UI and state management patterns |
+| `golang-patterns` | Idiomatic Go patterns and conventions |
+| `golang-testing` | Go table-driven tests, benchmarks, and fuzzing |
+| `iterative-retrieval` | Progressive context retrieval for subagents |
+| `postgres-patterns` | PostgreSQL optimization based on Supabase practices |
+| `project-guidelines-example` | Template for project-specific skill creation |
+| `security-review` | Authentication, input handling, and secrets checklist |
+| `session-start-hook` | Startup hooks for Claude Code web sessions |
+| `strategic-compact` | Manual context compaction at logical intervals |
+| `tdd-workflow` | TDD methodology with 80%+ coverage target |
+| `verification-loop` | Comprehensive verification system for sessions |
+
+## All Rules (8)
+
+| Rule | Description |
+|------|-------------|
+| `agents` | Agent orchestration and management guidelines |
+| `coding-style` | Immutability-first coding style |
+| `git-workflow` | Commit message format and version control standards |
+| `hooks` | Hook types and PreToolUse validation |
+| `patterns` | API response format and implementation patterns |
+| `performance` | Model selection strategy for cost efficiency |
+| `security` | Mandatory security checks before commits |
+| `testing` | Minimum 80% coverage with required test types |
 
 ---
 
