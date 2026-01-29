@@ -7,7 +7,7 @@ A comprehensive configuration framework for Claude Code that transforms Claude i
 | Component | Count | Description |
 |-----------|-------|-------------|
 | Agents | 12 | Specialized AI agents for different tasks |
-| Commands | 20 | Executable workflow commands |
+| Commands | 19 | Executable workflow commands |
 | Skills | 16 | Reusable knowledge modules |
 | Rules | 8 | Behavioral guidelines |
 
@@ -114,55 +114,7 @@ Understand and document an existing codebase.
 
 ---
 
-## Workflow 3: Debug & Fix
-
-Find and fix bugs systematically.
-
-```
-┌──────────────────────────────────────────────────────────────────┐
-│  STEP 1: Analyze Issue                                           │
-│  Command: /debug                                                 │
-│                                                                  │
-│  What happens:                                                   │
-│  - Describe the bug/error                                        │
-│  - Claude analyzes root cause                                    │
-│  - Identifies affected code                                      │
-└──────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌──────────────────────────────────────────────────────────────────┐
-│  STEP 2: Apply Fix                                               │
-│  (Claude implements the fix)                                     │
-│                                                                  │
-│  What happens:                                                   │
-│  - Makes targeted code changes                                   │
-│  - Preserves existing functionality                              │
-└──────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌──────────────────────────────────────────────────────────────────┐
-│  STEP 3: Add Tests                                               │
-│  Command: /tdd                                                   │
-│                                                                  │
-│  What happens:                                                   │
-│  - Writes tests covering the bug                                 │
-│  - Ensures regression prevention                                 │
-└──────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌──────────────────────────────────────────────────────────────────┐
-│  STEP 4: Verify                                                  │
-│  Command: /verify                                                │
-│                                                                  │
-│  What happens:                                                   │
-│  - Runs all tests                                                │
-│  - Confirms fix works                                            │
-└──────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## Workflow 4: Code Review & Quality
+## Workflow 3: Code Review & Quality
 
 Ensure code quality before committing.
 
@@ -214,7 +166,7 @@ Ensure code quality before committing.
 
 ---
 
-## Workflow 5: Refactoring
+## Workflow 4: Refactoring
 
 Clean up and remove dead code safely.
 
@@ -253,7 +205,7 @@ Clean up and remove dead code safely.
 
 ---
 
-## Workflow 6: Build Error Resolution
+## Workflow 5: Build Error Resolution
 
 Fix build failures quickly.
 
@@ -292,7 +244,7 @@ Fix build failures quickly.
 
 ---
 
-## Workflow 7: Test-Driven Development
+## Workflow 6: Test-Driven Development
 
 Build features with tests first.
 
@@ -340,7 +292,7 @@ Build features with tests first.
 
 ---
 
-## Workflow 8: Save Progress & Learn
+## Workflow 7: Save Progress & Learn
 
 Capture knowledge from your work session.
 
@@ -377,7 +329,6 @@ Capture knowledge from your work session.
 |---------------------|------------------|
 | Plan a feature | `/plan` |
 | Write tests first | `/tdd` |
-| Fix a bug | `/debug` |
 | Review code | `/code-review` |
 | Fix build errors | `/build-fix` |
 | Run full verification | `/verify` |
@@ -396,9 +347,6 @@ What do you need to do?
 │
 ├─► Understand existing code
 │   └─► /update-codemaps → /update-docs
-│
-├─► Fix a bug
-│   └─► /debug → fix → /tdd → /verify
 │
 ├─► Review code quality
 │   └─► /code-review → /test-coverage → /e2e
@@ -420,14 +368,13 @@ What do you need to do?
 
 # Component Reference
 
-## All Commands (20)
+## All Commands (19)
 
 | Command | Description |
 |---------|-------------|
 | `/build-fix` | Fix TypeScript/JavaScript build errors |
 | `/checkpoint` | Save and verify project checkpoints |
 | `/code-review` | Comprehensive code review |
-| `/debug` | Systematic debugging with root cause analysis |
 | `/e2e` | Run end-to-end tests |
 | `/eval` | Eval-driven development workflow |
 | `/go-build` | Fix Go build errors |
@@ -503,7 +450,7 @@ What do you need to do?
 ```
 .claude/
 ├── agents/                # 12 AI agent definitions
-├── commands/              # 20 CLI commands
+├── commands/              # 19 CLI commands
 ├── skills/                # 16 reusable knowledge modules
 ├── rules/                 # 8 behavioral guidelines
 ├── CLAUDE-TEMPLATE.md     # Project README template
